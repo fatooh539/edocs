@@ -19,6 +19,7 @@ class DocumentRoute extends Model
 
     protected $fillable = [
         'uuid',
+        'parent_route_id',
         'document_id',
         'from_department_id',
         'to_department_id',
@@ -128,7 +129,7 @@ class DocumentRoute extends Model
 
     public function scopePending($query)
     {
-        return $query->where('status', Status::DRAFT);
+        return $query->where('route_status', Status::DRAFT);
     }
 
     public function scopeReceived($query)
@@ -186,7 +187,7 @@ class DocumentRoute extends Model
         $this->update([
             'received_by' => $user->id,
             'received_at' => now(),
-            'status' => Status::RECEIVED,
+            'route_status' => Status::RECEIVED,
         ]);
     }
 
@@ -195,7 +196,7 @@ class DocumentRoute extends Model
         $this->update([
             'received_by' => $user->id,
             'completed_at' => now(),
-            'status' => Status::COMPLETED,
+            'route_status' => Status::COMPLETED,
         ]);
     }
 
@@ -210,7 +211,7 @@ class DocumentRoute extends Model
             'to_department_id' => $department->id,
             'sent_by' => $sender->id,
             'sent_at' => now(),
-            'status' => Status::DRAFT,
+            'route_status' => Status::DRAFT,
         ]);
     }
 }

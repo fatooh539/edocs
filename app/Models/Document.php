@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\enums\Priority;
-use App\enums\status;
+use App\Enums\Priority;
+use App\Enums\Status;
 use App\Models\Department;
 use Filament\Forms\Components\RichEditor\FileAttachmentProviders\SpatieMediaLibraryFileAttachmentProvider;
 use Filament\Forms\Components\RichEditor\Models\Concerns\InteractsWithRichContent;
@@ -12,6 +12,7 @@ use Filament\Forms\Components\RichEditor\Models\Contracts\HasRichContent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -43,8 +44,8 @@ class Document extends Model implements HasRichContent, HasMedia
         'confidential',
         'document_date',
         'archive_no',
-        // 'closed_at',
-        // 'closed_by',
+        'closed_at',
+        'closed_by',
     ];
 
     protected function casts(): array
@@ -56,6 +57,8 @@ class Document extends Model implements HasRichContent, HasMedia
             'document_date' => 'date',
 
             'confidential' => 'boolean',
+
+            'closed_at' => 'datetime',
 
 
         ];

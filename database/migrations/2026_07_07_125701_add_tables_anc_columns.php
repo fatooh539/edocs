@@ -1,7 +1,7 @@
 <?php
 
-use App\enums\priority;
-use App\enums\status;
+use App\Enums\Priority;
+use App\Enums\Status;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
