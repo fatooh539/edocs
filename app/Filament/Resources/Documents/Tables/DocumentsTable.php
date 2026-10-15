@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Documents\Tables;
 
 use App\Enums\Priority;
-use App\enums\status;
+use App\Enums\Status;
 use App\Models\Department;
 use App\Models\Document;
 use App\Models\DocumentComment;
